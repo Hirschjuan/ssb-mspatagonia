@@ -95,11 +95,11 @@ footer {
     }
 }
 .compatibilidad-info {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 15px;
+    padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 0.5px solid #ddd;
 }
 
 .compatibilidad-info h4 {
@@ -112,4 +112,86 @@ footer {
     margin-bottom: 0;
     font-size: 14px;
     color: #555;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media (max-width: 500px) {
+    th, td {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
+.btn-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    flex: 1; /* Hace que los botones ocupen el mismo espacio */
+}
+
+.btn-refresh {
+    background: #6c757d;
+}
+
+.btn-refresh:hover {
+    background: #5a6268;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+.compatibilidad-info {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre los elementos */
+    align-items: center;
+}
+
+.compatibilidad-info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    width: 100%; /* Ocupa toda la línea */
+}
+
+.compatibilidad-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    gap: 10px; /* Espacio entre los elementos */
+    align-items: center;
+}
+
+.compatibilidad-info span {
+    padding: 5px;
+    border-radius: 4px;
 }
