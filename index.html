@@ -24,7 +24,17 @@
             </div>
             <div id="formCampos"></div>
             <button type="button" class="btn" onclick="buscarBombas()">Buscar Bombas</button>
+            <button type="button" class="btn btn-refresh" onclick="refrescarResultados()">Refrescar</button>
         </form>
+
+        <!-- Explicación de colores de compatibilidad -->
+        <div class="compatibilidad-info">
+            <h4>Compatibilidad de Resultados</h4>
+            <p>
+                <span style="background-color: #d4edda; padding: 5px;">Verde claro</span>: Coincidencia cercana.<br> <span style="background-color: #fff3cd; padding: 5px;">Amarillo claro</span>: Coincidencia media<br> <span style="background-color: #f8d7da; padding: 5px;">Rojo claro</span>: Coincidencia lejana.
+            </p>
+        </div>
+
         <h3>Resultados de la Búsqueda</h3>
         <table>
             <thead id="resultadosHeader"></thead>
@@ -37,4 +47,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
