@@ -60,4 +60,93 @@ input, select {
 }
 
 .btn:hover {
-    backgro
+    background: #0056b3;
+}
+
+/* Mejora en la tabla para móviles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: block;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    background: #f3f3f3;
+    color: #777;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 800px) {
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    input, select, .btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    h2, h3 {
+        font-size: 20px;
+    }
+
+    input, select, .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 6px;
+    }
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+    }
+    
+    /* Ajustar la tabla dentro del contenedor */
+    table {
+        width: 100%;
+        min-width: 600px; /* Asegura que la tabla no se achique demasiado */
+        border-collapse: collapse;
+        display: block;
+    }
+}
