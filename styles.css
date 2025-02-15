@@ -2,7 +2,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
 }
 
 .container {
@@ -36,10 +36,11 @@ label {
 }
 
 input, select {
-    padding: 8px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
+    font-size: 16px;
 }
 
 .optional {
@@ -51,11 +52,20 @@ input, select {
     background: #007bff;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-refresh {
+    background: #6c757d;
+}
+
+.btn-refresh:hover {
+    background: #5a6268;
 }
 
 .btn:hover {
@@ -66,12 +76,15 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    overflow-x: auto;
+    display: block;
 }
 
 th, td {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 10px;
     text-align: center;
+    font-size: 16px;
 }
 
 th {
@@ -81,16 +94,55 @@ th {
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     margin-top: 20px;
-    background: #f3f3f3; /* Un gris más oscuro para diferenciarlo */
-    color: #b8b7b7; /* Letras menos llamativas */
+    background: #f3f3f3;
+    color: #777;
     font-size: 14px;
     border-radius: 4px;
 }
 
+/* RESPONSIVIDAD */
 @media (max-width: 800px) {
     .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    input, select, .btn {
+        font-size: 16px;
         padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    h2, h3 {
+        font-size: 20px;
+    }
+
+    input, select, .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 6px;
     }
 }
