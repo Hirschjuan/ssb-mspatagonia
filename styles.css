@@ -137,16 +137,4 @@ footer {
         font-size: 12px;
         padding: 6px;
     }
-    .table-container {
-        overflow-x: auto;
-        width: 100%;
-    }
-    
-    /* Ajustar la tabla dentro del contenedor */
-    table {
-        width: 100%;
-        min-width: 600px; /* Asegura que la tabla no se achique demasiado */
-        border-collapse: collapse;
-        display: block;
-    }
 }
