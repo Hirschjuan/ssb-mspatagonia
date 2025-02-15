@@ -33,13 +33,15 @@ h2, h3 {
 
 label {
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 input, select {
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
+    font-size: 14px;
 }
 
 .optional {
@@ -47,97 +49,9 @@ input, select {
     color: gray;
 }
 
-.btn {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-}
-
-.btn:hover {
-    background: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-}
-
-th {
-    background: #007bff;
-    color: white;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-    background: #f3f3f3; /* Un gris más oscuro para diferenciarlo */
-    color: #b8b7b7; /* Letras menos llamativas */
-    font-size: 14px;
-    border-radius: 4px;
-}
-
-@media (max-width: 800px) {
-    .container {
-        padding: 10px;
-    }
-}
-.compatibilidad-info {
-    margin-top: 15px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 0.5px solid #ddd;
-}
-
-.compatibilidad-info h4 {
-    margin-top: 0;
-    font-size: 18px;
-    color: #333;
-}
-
-.compatibilidad-info p {
-    margin-bottom: 0;
-    font-size: 14px;
-    color: #555;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    overflow-x: auto;
-    display: block;
-    white-space: nowrap;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    font-size: 16px;
-}
-
-@media (max-width: 500px) {
-    th, td {
-        font-size: 12px;
-        padding: 6px;
-    }
-}
 .btn-container {
     display: flex;
-    gap: 10px; /* Espacio entre los botones */
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -148,8 +62,9 @@ th, td {
     padding: 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    flex: 1; /* Hace que los botones ocupen el mismo espacio */
+    font-size: 16px;
+    flex: 1;
+    text-align: center;
 }
 
 .btn-refresh {
@@ -163,23 +78,50 @@ th, td {
 .btn:hover {
     background: #0056b3;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    background: #f3f3f3;
+    color: #777;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
 .compatibilidad-info {
     margin-top: 20px;
     padding: 15px;
     background-color: #f8f9fa;
     border-radius: 8px;
     border: 1px solid #ddd;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Espacio entre los elementos */
-    align-items: center;
 }
 
 .compatibilidad-info h4 {
-    margin: 0;
+    margin-top: 0;
     font-size: 18px;
     color: #333;
-    width: 100%; /* Ocupa toda la línea */
 }
 
 .compatibilidad-info p {
@@ -187,11 +129,68 @@ th, td {
     font-size: 14px;
     color: #555;
     display: flex;
-    gap: 10px; /* Espacio entre los elementos */
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
 }
 
 .compatibilidad-info span {
     padding: 5px;
     border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    h2, h3 {
+        font-size: 1.5em;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    input, select, .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .compatibilidad-info {
+        padding: 10px;
+    }
+
+    .compatibilidad-info h4 {
+        font-size: 16px;
+    }
+
+    .compatibilidad-info p {
+        font-size: 12px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .compatibilidad-info span {
+        padding: 3px;
+    }
 }
