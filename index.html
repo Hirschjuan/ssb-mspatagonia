@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Selección de Bombas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo de la empresa" height="50">
+        </div>
+        <h2>Sistema de Selección de Bombas</h2>
+        <form id="searchForm">
+            <div class="form-group">
+                <label for="tipoBomba">Tipo de bomba:</label>
+                <select id="tipoBomba" onchange="actualizarFormulario()">
+                    <option value="">Seleccione el Tipo de Bomba</option>
+                    <option value="Presurizadoras">Presurizadoras</option>
+                    <option value="Recirculación">Recirculación</option>
+                    <option value="Periféricas">Periféricas</option>
+                </select>
+            </div>
+            <div id="formCampos"></div>
+            <button type="button" class="btn" onclick="buscarBombas()">Buscar Bombas</button>
+        </form>
+        <h3>Resultados de la Búsqueda</h3>
+        <table>
+            <thead id="resultadosHeader"></thead>
+            <tbody id="resultados"></tbody>
+        </table>
+        <footer>
+            <p>Desarrollado por Hirschfeldt Juan</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
