@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
             tipo: "Presurizadoras", codigo: "92785853", marca: "DAB", modelo: "E.SYBOX MAX 85/120 T", caudalMaximo: 17.4, caudalMinimo: 2.4, alturaMaxima: 113, alturaMinima: 43.5, tension: "Monofásica", hp: 4.7, tanqueElevado: "Sí", tanqueCisterna: "Sí"
         },
         {
-            tipo: "Recirculación", codigo: "92785853", marca: "Grundfos", modelo: "UPS 25-40", velocidad: 3, longitud: 130, conexion: "1 1/2 pulgada", caudalaltura: "1700 lts/h - 2 m.c.a"
+            tipo: "Recirculación", codigo: "92785853", marca: "Grundfos", modelo: "UPS 25-40", sanitarios: "Si", calefaccion: "Si", velocidad: 3, longitud: 130, conexion: "1 1/2 pulgada", caudalaltura: "1700 lts/h - 2 m.c.a"
         },
         {
             tipo: "Periféricas", codigo: "B.AA.3.0005.M", marca: "Motorarg", modelo: "PF 50 M r.3", caudalMaximo: 1.8, caudalMinimo: 0.1, alturaMaxima: 22, alturaMinima: 2, hp: 0.5, tension: "Monofásica"
@@ -208,6 +208,22 @@ function actualizarFormulario() {
     } else if (tipoBomba === "Recirculación") {
         formCampos.innerHTML = `
             <div class="form-group">
+                <label for="sanitarios">Sanitarios:</label>
+                <select id="sanitarios">
+                    <option value="">Cualquiera</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="calefaccion">Calefacción:</label>
+                <select id="calefaccion">
+                    <option value="">Cualquiera</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select> 
+            </div>          
+            <div class="form-group">
                 <label for="velocidad">Velocidad:</label>
                 <select id="velocidad">
                     <option value="">Cualquiera</option>
@@ -239,6 +255,8 @@ function actualizarFormulario() {
                 <th>Código</th>
                 <th>Marca</th>
                 <th>Modelo</th>
+                <th>Sanitarios</th>
+                <th>Calefacción</th>
                 <th>Velocidad</th>
                 <th>Longitud</th>
                 <th>Conexión</th>
@@ -296,11 +314,15 @@ function buscarBombas() {
                    (tanqueCisterna === "" || bomba.tanqueCisterna === tanqueCisterna) &&
                    (tension === "" || bomba.tension === tension);
         } else if (tipoBomba === "Recirculación") {
+            const sanitarios = document.getElementById("sanitarios")?.value;
+            const calefaccion = document.getElementById("calefaccion")?.value;
             const velocidad = document.getElementById("velocidad")?.value;
             const longitud = document.getElementById("longitud")?.value;
             const conexion = document.getElementById("conexion")?.value;
 
             return bomba.tipo === tipoBomba &&
+                   (sanitarios === "" || bomba.sanitarios === sanitarios) &&
+                   (calefaccion === "" || bomba.calefaccion === calefaccion) &&
                    (velocidad === "" || bomba.velocidad == velocidad) &&
                    (longitud === "" || bomba.longitud === longitud) &&
                    (conexion === "" || bomba.conexion === conexion);
@@ -369,6 +391,8 @@ function mostrarResultados(resultados, qmax, hmax) {
                     <td>${bomba.codigo}</td>
                     <td>${bomba.marca}</td>
                     <td>${bomba.modelo}</td>
+                    <td>${bomba.sanitarios}</td>
+                    <td>${bomba.calefaccion}</td>
                     <td>${bomba.velocidad}</td>
                     <td>${bomba.longitud}</td>
                     <td>${bomba.conexion}</td>
