@@ -151,9 +151,12 @@ function actualizarFormulario() {
     const tipoBomba = document.getElementById("tipoBomba").value;
     const formCampos = document.getElementById("formCampos");
     const resultadosHeader = document.getElementById("resultadosHeader");
+    const resultadosBody = document.getElementById("resultados");
 
+    // Limpiar campos del formulario y resultados
     formCampos.innerHTML = "";
     resultadosHeader.innerHTML = "";
+    resultadosBody.innerHTML = "";
 
     if (tipoBomba === "Presurizadoras") {
         formCampos.innerHTML = `
@@ -279,20 +282,19 @@ function actualizarFormulario() {
 
 function buscarBombas() {
     const tipoBomba = document.getElementById("tipoBomba").value;
+    const qmax = parseFloat(document.getElementById("qmax")?.value) || null;
+    const hmax = parseFloat(document.getElementById("hmax")?.value) || null;
+
     const resultadosFiltrados = window.bombas.filter((bomba) => {
         if (tipoBomba === "Presurizadoras") {
             const tanqueElevado = document.getElementById("tanqueElevado")?.value;
             const tanqueCisterna = document.getElementById("tanqueCisterna")?.value;
             const tension = document.getElementById("tension")?.value;
-            const qmax = parseFloat(document.getElementById("qmax")?.value) || null;
-            const hmax = parseFloat(document.getElementById("hmax")?.value) || null;
 
             return bomba.tipo === tipoBomba &&
                    (tanqueElevado === "" || bomba.tanqueElevado === tanqueElevado) &&
                    (tanqueCisterna === "" || bomba.tanqueCisterna === tanqueCisterna) &&
-                   (tension === "" || bomba.tension === tension) &&
-                   (qmax === null || bomba.caudalMaximo >= qmax) &&
-                   (hmax === null || bomba.alturaMaxima >= hmax);
+                   (tension === "" || bomba.tension === tension);
         } else if (tipoBomba === "Recirculación") {
             const velocidad = document.getElementById("velocidad")?.value;
             const longitud = document.getElementById("longitud")?.value;
@@ -303,21 +305,26 @@ function buscarBombas() {
                    (longitud === "" || bomba.longitud === longitud) &&
                    (conexion === "" || bomba.conexion === conexion);
         } else if (tipoBomba === "Periféricas") {
-            const qmax = parseFloat(document.getElementById("qmax")?.value) || null;
-            const hmax = parseFloat(document.getElementById("hmax")?.value) || null;
             const tension = document.getElementById("tension")?.value;
 
             return bomba.tipo === tipoBomba &&
-                   (tension === "" || bomba.tension === tension) &&
-                   (qmax === null || (bomba.qmax >= qmax * 0.9 && bomba.qmax <= qmax * 1.1)) &&
-                   (hmax === null || (bomba.hmax >= hmax * 0.9 && bomba.hmax <= hmax * 1.1));
+                   (tension === "" || bomba.tension === tension);
         }
     });
 
-    mostrarResultados(resultadosFiltrados);
+    // Ordenar resultados por cercanía a los valores de Qmáx y Hmáx
+    if (qmax !== null && hmax !== null) {
+        resultadosFiltrados.sort((a, b) => {
+            const distanciaA = Math.sqrt(Math.pow(a.caudalMaximo - qmax, 2) + Math.pow(a.alturaMaxima - hmax, 2));
+            const distanciaB = Math.sqrt(Math.pow(b.caudalMaximo - qmax, 2) + Math.pow(b.alturaMaxima - hmax, 2));
+            return distanciaA - distanciaB;
+        });
+    }
+
+    mostrarResultados(resultadosFiltrados, qmax, hmax);
 }
 
-function mostrarResultados(resultados) {
+function mostrarResultados(resultados, qmax, hmax) {
     const resultadosBody = document.getElementById("resultados");
     resultadosBody.innerHTML = "";
 
@@ -327,9 +334,23 @@ function mostrarResultados(resultados) {
     }
 
     resultados.forEach((bomba) => {
+        let colorFondo = "";
+
+        if (qmax !== null && hmax !== null) {
+            const distancia = Math.sqrt(Math.pow(bomba.caudalMaximo - qmax, 2) + Math.pow(bomba.alturaMaxima - hmax, 2));
+
+            if (distancia < 2) {
+                colorFondo = "background-color:rgb(53, 240, 53);"; // Verde claro para coincidencia cercana
+            } else if (distancia < 5) {
+                colorFondo = "background-color:rgb(255, 251, 0);"; // Amarillo claro para coincidencia media
+            } else {
+                colorFondo = "background-color:rgb(240, 66, 80);"; // Rojo claro para coincidencia lejana
+            }
+        }
+
         if (bomba.tipo === "Presurizadoras") {
             resultadosBody.innerHTML += `
-                <tr>
+                <tr style="${colorFondo}">
                     <td>${bomba.codigo}</td>
                     <td>${bomba.marca}</td>
                     <td>${bomba.modelo}</td>
@@ -344,7 +365,7 @@ function mostrarResultados(resultados) {
             `;
         } else if (bomba.tipo === "Recirculación") {
             resultadosBody.innerHTML += `
-                <tr>
+                <tr style="${colorFondo}">
                     <td>${bomba.codigo}</td>
                     <td>${bomba.marca}</td>
                     <td>${bomba.modelo}</td>
@@ -356,7 +377,7 @@ function mostrarResultados(resultados) {
             `;
         } else if (bomba.tipo === "Periféricas") {
             resultadosBody.innerHTML += `
-                <tr>
+                <tr style="${colorFondo}">
                     <td>${bomba.codigo}</td>
                     <td>${bomba.marca}</td>
                     <td>${bomba.modelo}</td>
