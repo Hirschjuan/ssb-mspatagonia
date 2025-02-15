@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Selección de Bombas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -25,7 +26,6 @@
             <div id="formCampos"></div>
             <div class="btn-container">
                 <button type="button" class="btn" onclick="buscarBombas()">Buscar Bombas</button>
-                <button type="button" class="btn btn-refresh" onclick="refrescarResultados()">Refrescar</button>
             </div>
         </form>
 
@@ -33,9 +33,9 @@
         <div class="compatibilidad-info">
             <h4>Compatibilidad de Resultados</h4>
             <p>
-                <span style="background-color: #d4edda;">Verde</span>: Coincidencia cercana<br>
-                <span style="background-color: #fff3cd;">Amarillo</span>: Coincidencia media<br>
-                <span style="background-color: #f8d7da;">Rojo</span>:<S></S> Sin Coincidencia
+                <span style="background-color: #d4edda;">Verde claro</span>: Coincidencia cercana<br>
+                <span style="background-color: #fff3cd;">Amarillo claro</span>: Coincidencia media<br>
+                <span style="background-color: #f8d7da;">Rojo claro</span>: Coincidencia lejana
             </p>
         </div>
 
