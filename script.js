@@ -138,9 +138,8 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             tipo: "Recirculación", codigo: "92785853", marca: "Grundfos", modelo: "UPS 25-40", sanitarios: "Si", calefaccion: "Si", velocidad: 3, longitud: 130, conexion: "1 1/2 pulgada", caudalaltura: "1700 lts/h - 2 m.c.a"
         },
-        {
-            tipo: "Periféricas", codigo: "B.AA.3.0005.M", marca: "Motorarg", modelo: "PF 50 M r.3", caudalMaximo: 1.8, caudalMinimo: 0.1, alturaMaxima: 22, alturaMinima: 2, hp: 0.5, tension: "Monofásica"
-        },
+        {tipo: "Periféricas", codigo: "B.AA.3.0005.M", marca: "Motorarg", modelo: "PF 50 M r.3", caudalMaximo: 1.8, caudalMinimo: 0.1, alturaMaxima: 22, alturaMinima: 2, hp: 0.5, tension: "Monofásica"},
+        {tipo: "Periféricas", codigo: "96958042", marca: "DAB", modelo: "KPF 30/16 M", caudalMaximo: 2.1, caudalMinimo: 0.6, alturaMaxima: 25, alturaMinima: 6, hp: 0.5, tension: "Monofásica"},
 
     ];
 
