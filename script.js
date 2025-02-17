@@ -138,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('resultados').innerHTML = '';
 });
 
+
+    document.getElementById('resultados').innerHTML = '';
+});
+
 function actualizarFormulario() {
     const tipoBomba = document.getElementById("tipoBomba").value;
     const formCampos = document.getElementById("formCampos");
@@ -235,7 +239,12 @@ function actualizarFormulario() {
             </div>
             <div class="form-group">
                 <label for="caudalaltura">Caudal x Altura Nominal:</label>
-                <input type="text" id="caudalaltura">
+                <select id="caudalaltura">
+                    <option value="">Cualquiera</option>
+                    <option value="1700 lts/h - 2 m.c.a">1700 lts/h - 2 m.c.a</option>
+                    <option value="2000 lts/h - 3 m.c.a">2000 lts/h - 3 m.c.a</option>
+                    <option value="2500 lts/h - 4 m.c.a">2500 lts/h - 4 m.c.a</option>
+                </select>
             </div>
         `;
         resultadosHeader.innerHTML = `
@@ -310,8 +319,8 @@ function buscarBombas() {
             return bomba.tipo === tipoBomba &&
                    (aplicacion === "" || bomba.aplicacion === aplicacion) &&
                    (velocidad === "" || bomba.velocidad == velocidad) &&
-                   (longitud === "" || bomba.longitud == longitud) && // Comparación corregida
-                   (caudalaltura === "" || bomba.caudalaltura === caudalaltura) &&
+                   (longitud === "" || bomba.longitud == longitud) &&
+                   (caudalaltura === "" || bomba.caudalaltura === caudalaltura) && // Filtrado por caudalaltura
                    (conexion === "" || bomba.conexion === conexion);
         } else if (tipoBomba === "Periféricas") {
             const tension = document.getElementById("tension")?.value;
