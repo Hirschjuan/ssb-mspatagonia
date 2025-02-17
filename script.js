@@ -138,10 +138,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('resultados').innerHTML = '';
 });
 
-
-    document.getElementById('resultados').innerHTML = '';
-});
-
 function actualizarFormulario() {
     const tipoBomba = document.getElementById("tipoBomba").value;
     const formCampos = document.getElementById("formCampos");
