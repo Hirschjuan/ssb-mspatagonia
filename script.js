@@ -106,17 +106,18 @@ function actualizarFormulario() {
                 <select id="longitud">
                     <option value="">Cualquiera</option>
                     <option value="130">130</option>
-                    <option value="100">100</option>
-                    <option value="120">120</option>
+                    <option value="150">150</option>
+                    <option value="180">180</option>
+                    <option value="230">230</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="conexion">Conexión:</label>
                 <select id="conexion">
                     <option value="">Cualquiera</option>
-                    <option value="1 1/2 pulgada">1 1/2 pulgada</option>
-                    <option value="1 pulgada">1 pulgada</option>
-                    <option value="2 pulgadas">2 pulgadas</option>
+                    <option value="1 1/2 x 1 1/2 pulgadas">1 1/2 x 1 1/2 pulgadas</option>
+                    <option value="2 x 2 pulgadas">2 pulgadas</option>
+                    <option value="3/4 x 3/4 pulgadas">3/4 x 3/4 pulgadas</option>
                 </select>
             </div>
             <div class="form-group">
@@ -124,8 +125,11 @@ function actualizarFormulario() {
                 <select id="caudalaltura">
                     <option value="">Cualquiera</option>
                     <option value="1700 lts/h - 2 m.c.a">1700 lts/h - 2 m.c.a</option>
+                    <option value="1800 lts/h - 2.5 m.c.a">1800 lts/h - 2.5 m.c.a</option>
                     <option value="2000 lts/h - 3 m.c.a">2000 lts/h - 3 m.c.a</option>
-                    <option value="2500 lts/h - 4 m.c.a">2500 lts/h - 4 m.c.a</option>
+                    <option value="4300 lts/h - 5 m.c.a">4300 lts/h - 5 m.c.a</option>
+                    <option value="6000 lts/h - 4.1 m.c.a">6000 lts/h - 4.1 m.c.a</option>
+                    <option value="2000 lts/h - 2.8 m.c.a">2000 lts/h - 2.8 m.c.a</option>
                 </select>
             </div>
         `;
