@@ -207,21 +207,13 @@ function actualizarFormulario() {
     } else if (tipoBomba === "Recirculación") {
         formCampos.innerHTML = `
             <div class="form-group">
-                <label for="sanitarios">Sanitarios:</label>
-                <select id="sanitarios">
+                <label for="aplicacion">Aplicación:</label>
+                <select id="aplicacion">
                     <option value="">Cualquiera</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
+                    <option value="Calefacción">Calefacción</option>
+                    <option value="Sanitarios">Sanitarios</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="calefaccion">Calefacción:</label>
-                <select id="calefaccion">
-                    <option value="">Cualquiera</option>
-                    <option value="Sí">Sí</option>
-                    <option value="No">No</option>
-                </select> 
-            </div>          
             <div class="form-group">
                 <label for="velocidad">Velocidad:</label>
                 <select id="velocidad">
@@ -232,21 +224,26 @@ function actualizarFormulario() {
                 </select>
             </div>
             <div class="form-group">
-                <label for="longitud">Longitud:</label>
+                <label for="longitud">Longitud (mm):</label>
                 <select id="longitud">
                     <option value="">Cualquiera</option>
-                    <option value="130 mm">130 mm</option>
-                    <option value="180 mm">180 mm</option>
+                    <option value="130">130</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="conexion">Conexión:</label>
                 <select id="conexion">
                     <option value="">Cualquiera</option>
-                    <option value="1/2 pulgada">1/2 pulgada</option>
-                    <option value="3/4 pulgada">3/4 pulgada</option>
+                    <option value="1 1/2 pulgada">1 1/2 pulgada</option>
                     <option value="1 pulgada">1 pulgada</option>
+                    <option value="2 pulgadas">2 pulgadas</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="caudalaltura">Caudal x Altura Nominal:</label>
+                <input type="text" id="caudalaltura">
             </div>
         `;
         resultadosHeader.innerHTML = `
@@ -254,12 +251,11 @@ function actualizarFormulario() {
                 <th>Código</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Sanitarios</th>
-                <th>Calefacción</th>
+                <th>Aplicación</th>
                 <th>Velocidad</th>
                 <th>Longitud</th>
                 <th>Conexión</th>
-                <th>Caudal x Altura</th>
+                <th>Caudal x Altura Nominal</th>
             </tr>
         `;
     } else if (tipoBomba === "Periféricas") {
@@ -313,17 +309,17 @@ function buscarBombas() {
                    (tanqueCisterna === "" || bomba.tanqueCisterna === tanqueCisterna) &&
                    (tension === "" || bomba.tension === tension);
         } else if (tipoBomba === "Recirculación") {
-            const sanitarios = document.getElementById("sanitarios")?.value;
-            const calefaccion = document.getElementById("calefaccion")?.value;
+            const aplicacion = document.getElementById("aplicacion")?.value;
             const velocidad = document.getElementById("velocidad")?.value;
             const longitud = document.getElementById("longitud")?.value;
+            const caudalaltura = document.getElementById("caudalaltura")?.value;
             const conexion = document.getElementById("conexion")?.value;
 
             return bomba.tipo === tipoBomba &&
-                   (sanitarios === "" || bomba.sanitarios === sanitarios) &&
-                   (calefaccion === "" || bomba.calefaccion === calefaccion) &&
+                   (aplicacion === "" || bomba.aplicacion === aplicacion) &&
                    (velocidad === "" || bomba.velocidad == velocidad) &&
-                   (longitud === "" || bomba.longitud === longitud) &&
+                   (longitud === "" || bomba.longitud == longitud) && // Comparación corregida
+                   (caudalaltura === "" || bomba.caudalaltura === caudalaltura) &&
                    (conexion === "" || bomba.conexion === conexion);
         } else if (tipoBomba === "Periféricas") {
             const tension = document.getElementById("tension")?.value;
@@ -390,8 +386,7 @@ function mostrarResultados(resultados, qmax, hmax) {
                     <td>${bomba.codigo}</td>
                     <td>${bomba.marca}</td>
                     <td>${bomba.modelo}</td>
-                    <td>${bomba.sanitarios}</td>
-                    <td>${bomba.calefaccion}</td>
+                    <td>${bomba.aplicacion}</td>
                     <td>${bomba.velocidad}</td>
                     <td>${bomba.longitud}</td>
                     <td>${bomba.conexion}</td>
