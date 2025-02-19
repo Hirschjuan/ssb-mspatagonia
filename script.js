@@ -240,34 +240,28 @@ function buscarBombas() {
 
     mostrarResultados(resultadosFiltrados, qmax, hmax);
  }
-        function exportarAPDF() {
-            // Crear una instancia de jsPDF
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
-        
-            // Capturar el contenido de la página
-            const element = document.querySelector('.container');
-        
-            // Opciones para html2canvas (puedes ajustarlas según tus necesidades)
-            const options = {
-                scale: 2, // Aumentar la escala para mejorar la calidad
-                useCORS: true, // Permitir el uso de CORS para imágenes externas
-            };
-        
-            // Usar html2canvas para capturar el contenido como una imagen
-            html2canvas(element, options).then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-        
-                // Añadir la imagen al PDF
-                const imgWidth = doc.internal.pageSize.getWidth();
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-        
-                // Guardar el PDF
-                doc.save('pagina_completa.pdf');
-            });
+function exportarAPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
 
+    const element = document.querySelector('.container');
+
+    const options = {
+        scale: 2,
+        useCORS: true,
+        logging: true,
+    };
+
+    html2canvas(element, options).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = doc.internal.pageSize.getWidth();
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        doc.save('pagina_completa.pdf');
+    }).catch((error) => {
+        console.error('Error al generar el PDF:', error);
+    });
 }
 
 function mostrarResultados(resultados, qmax, hmax) {
